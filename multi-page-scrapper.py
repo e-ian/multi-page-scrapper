@@ -27,3 +27,6 @@ print(first_imdb)
 # first movie metascore
 first_mscore = int(first_movie.find('span', class_='metascore favorable').text)
 print(first_mscore)
+#first movie votes
+first_votes = int(first_movie.find('span', attrs = {'name':'nv'})['data-value'])
+print(first_votes)
