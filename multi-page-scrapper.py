@@ -1,5 +1,6 @@
 from requests import get
 from bs4 import BeautifulSoup
+import pandas as pd
 
 url = 'http://www.imdb.com/search/title?release_date=2017&sort=num_votes,desc&page=1'
 
@@ -56,4 +57,13 @@ for container in movie_containers:
 
         vote = container.find('span', attrs = {'name':'nv'})['data-value']
         votes.append(int(vote))
+
+test_df = pd.DataFrame({
+    'movie': names,
+    'year': years,
+    'imdb': imdb_ratings,
+    'metascore': metascores,
+    'votes': votes
+})
+print(test_df.info())
 
